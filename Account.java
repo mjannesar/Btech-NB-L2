@@ -1,66 +1,46 @@
 public class Account {
+    // fields
     String name;
-    long accountNumber;
     String branchName;
     double balance;
+    String uuid;
 
     Account() {
 
     }
 
-    Account(String name, double startingAmount) {
+    Account(String name, String branch, double startingAmount) {
+        branchName = branch;
+        this.name = name;
         balance = startingAmount;
-        this.name = name;
+        uuid = "abcd1";
     }
-
-    Account(String name, long accNum, String  branch, double balance) {
-        this.name = name;
-        accountNumber = accNum;
-        this.branchName = branch;
-        this.balance = balance;
-    }
-
-
-    // behaviours
+    
     public void deposit(double amount) {
         balance += amount;
     }
 
-    public boolean withdraw(double amount) {
-        if(amount > balance) {
-            return false;
-        }
-
+    public void withdraw(double amount) {
         balance -= amount;
-        return true;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public double getBalance() {
-        return balance;
+    public String getBranchName() {
+        return branchName;
     }
 
     public static void main(String[] args) {
         Account a1 = new Account();
-         System.out.println(a1.accountNumber+"  "+a1.name+"  "+a1.balance);
-        a1.accountNumber = 12353435;
-        a1.name = "Ansh";
+        a1.name = "Utkarsh";
+        a1.branchName = "Greater Noida GLA";
+        a1.uuid = "A124";
         a1.balance = 2000;
-        a1.branchName = "Greater Noida";
+        System.out.println(a1.balance+"  "+a1.branchName+" "+a1.name);
 
-        Account a2 = new Account("Mohit Bhaiya", 100000);
-        Account a3 = new Account("Mehul Sir ji", 543534334, "Delhi", 50000000);
-        // System.out.println(a1.accountNumber+"  "+a1.name+"  "+a1.balance);
-        // System.out.println(a1.getName());
-        System.out.println(a2.accountNumber+"  "+a2.name+"  "+a2.balance);
-        System.out.println(a2.getName());
-        System.out.println(a3.accountNumber+"  "+a3.name+"  "+a3.balance);
-        System.out.println(a3.getName());
-        // String s = new String();
+        Account a2 = new Account("Suraj", "Mathura", 3000);
+        System.out.println(a2.balance+"  "+a2.branchName+" "+a2.name);
 
-        // String s = new String();
+        // Account a3 = new Account(double amount);
+        // Account a4v= new Account(String name, String branchName);
+        // Account a4v= new Account(double amount, String name, String branchName);
     }
 }
